@@ -52,6 +52,7 @@ function nextLevel(){
         v19_2.remove(); // 移除整個 v19_2 元素
     }
 
+    changeSubmarine([]);
     nowLevel = (nowLevel + 1) % totalLevel;
 
     let title = document.querySelector('.v17_7');
@@ -90,6 +91,7 @@ function randomLevel() {
         v19_2.remove(); // 移除整個 v19_2 元素
     }
 
+    changeSubmarine([]);
     nowLevel = Math.floor(Math.random() * totalLevel);
     // console.log('randomLevel ->', nowLevel)
 
@@ -121,11 +123,18 @@ function randomLevel() {
 }
 
 function choseLevel() {
-    document.body.innerHTML = document.body.innerHTML;
+    
     // console.log('choseLevel -> 進入');
     let input = document.querySelector('.v17_48');
+
+    // console.log(input.tagName);
+    // console.log(input);
+    // console.log(input.value);
     let value = parseInt(input.value, 10); // 取得輸入框中的數字並轉為整數
 
+    console.log(value);
+
+    changeSubmarine([]);
     // 檢查輸入是否在 1 到 totalLevel 範圍內
     if (isNaN(value) || value <= 0 || value > totalLevel) {
         alert(`最高${totalLevel}關，請輸入 1 - ${totalLevel}的數字`);
@@ -156,6 +165,7 @@ function choseLevel() {
     }
     data1 = data1[0].concat(data1[1])
     // console.log('nextLevel', data1)
+    document.body.innerHTML = document.body.innerHTML;
     setGrid();
     const overlayImages = document.querySelectorAll('.overlay-image');
     overlayImages.forEach(element => {
@@ -181,7 +191,7 @@ function setGrid() {
 
             // 清除之前的背景類名
             item.classList.remove('sea', 'submarine', 'noSubmarine');
-            item.classList.add(lst[item.clickCount]); // 第一次點擊，設置 sea.png
+            item.classList.add(lst[item.clickCount]); // 第一次點擊，設置 sea
 
             let site = []
             gridItems.forEach((item, index) => {
