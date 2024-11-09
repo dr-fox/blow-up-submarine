@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* 在 .v1_3 和 .grid-container 之間保持 100px 的間距 */
+}
+
+/* 棋盤格樣式 */
+.grid-container {
+    /* position: relative; 設置為相對定位 */
+    display: grid;
+    grid-template-columns: repeat(7, 50px); /* 每列6格，每格寬50px */
+    grid-template-rows: repeat(7, 50px);    /* 每行6格，每格高50px */
+    gap: 4px; /* 棋盤格之間的間距 */
+    justify-content: center;
+    margin-top: 50px;
+    user-select: none; /* 禁止文字選擇，避免出現文字游標 */
+}
+
+/* 覆蓋圖片樣式 */
+.overlay-image {
+    position: absolute;
+    background-size: cover;
+    pointer-events: none; /* 確保覆蓋圖片不會影響棋盤格的點擊 */
+    justify-content: center;
+}
+
+/* 每一格的樣式 */
+.grid-item {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* 點擊後不同的背景樣式 */
+.sea {
+    background-image: url('../images/sea.png');
+    background-size: cover;
+}
+
+.submarine {
+    background-image: url('../images/submarine_01.png');
+    background-size: cover;
+}
+
+.noSubmarine {
+    background-image: url('../images/noSubmarine.png');
+    background-size: cover;
+}
+
+.number-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: black;
+    font-family: 'Krungthep', sans-serif; /* 設置字體 */
+    font-weight: bold; /* 設為粗體 */
+}

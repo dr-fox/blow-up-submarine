@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v15_16 {
+  width: 300px;
+  height: 410px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v17_47 {
+  width: 161px;
+  height: 60px;
+  background: url("../images/img_004.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 349px;
+  left: 138px;
+  overflow: hidden;
+}
+
+.v17_48 {
+  width: 42px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  top: 360px;
+  left: 196px;
+  overflow: hidden;
+  border: 2px solid black;  /* 粗細為 2px，黑色邊框 */
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.v17_48::placeholder {
+  font-size: 20px;          /* 調整文字大小 */
+}
+
+.v17_37 {
+  width: 133px;
+  height: 60px;
+  background: url("../images/img_003.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 349px;
+  left: 0px;
+  overflow: hidden;
+}
+.v17_55 {
+  width: 300px;
+  height: 410px;
+  background: url("../images/img_002.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v17_7 {
+  width: 216px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 21px;
+  left: 42px;
+  font-family: Alike;
+  font-weight: Regular;
+  font-size: 28px;
+  opacity: 1;
+  text-align: center;
+}

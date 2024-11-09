@@ -1,0 +1,77 @@
+.v1_3 {
+  position: relative;
+}
+.v10_2 {
+  width: 300px;
+  height: 300px;
+  background: url("../images/img_001.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 公共樣式，適用於所有 span 元素 */
+.v8-common1 {
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-weight: Extra Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+  position: absolute;
+  top: 260px;
+}
+
+.v8-common2 {
+  color: rgba(255, 255, 255, 1);
+  font-family: Inter;
+  font-weight: Extra Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+  position: absolute;
+  top: 260px;
+}
+
+.v8_1 {
+  /* width: 10px; */
+  left: 23px;
+}
+
+.v8_2 {
+  /* width: 23px; */
+  left: 41px;
+}
+
+.v8_3 {
+  /* width: 10px; */
+  left: 93px;
+}
+
+.v8_4 {
+  /* width: 23px; */
+  left: 111px;
+}
+
+.v8_5 {
+  /* width: 10px; */
+  left: 163px;
+}
+
+.v8_6 {
+  /* width: 23px; */
+  left: 181px;
+}
+
+.v8_7 {
+  /* width: 10px; */
+  left: 233px;
+}
+
+.v8_8 {
+  /* width: 23px; */
+  left: 251px;
+}
