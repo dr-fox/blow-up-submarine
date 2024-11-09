@@ -403,6 +403,21 @@ loadLevelData().then(data_ => {
 
     setGrid();
     setNumber(data1);
+    const imageUrls = [
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/sea.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/submarine_01.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/noSubmarine.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/submarine_02.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/submarine_03.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/submarine_04.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/img_001.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/img_002.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/img_003.png?raw=true',
+        'https://github.com/dr-fox/blow-up-submarine/blob/main/images/img_004.png?raw=true',
+        "https://github.com/dr-fox/blow-up-submarine/blob/main/images/v19_6.png?raw=true",
+        "https://github.com/dr-fox/blow-up-submarine/blob/main/images/v19_15.png?raw=true",
+        "https://github.com/dr-fox/blow-up-submarine/blob/main/images/v19_19.png?raw=true"
+    ];
 });
 
 const gridItems = document.querySelectorAll('.grid-item');
