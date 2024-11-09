@@ -37,17 +37,17 @@
 
 /* 點擊後不同的背景樣式 */
 .sea {
-    background-image: url('../images/sea.png');
+    background-image: url('https://github.com/dr-fox/blow-up-submarine/blob/main/images/sea.png?raw=true');
     background-size: cover;
 }
 
 .submarine {
-    background-image: url('../images/submarine_01.png');
+    background-image: url('https://github.com/dr-fox/blow-up-submarine/blob/main/images/submarine_01.png?raw=true');
     background-size: cover;
 }
 
 .noSubmarine {
-    background-image: url('../images/noSubmarine.png');
+    background-image: url('https://github.com/dr-fox/blow-up-submarine/blob/main/images/noSubmarine.png?raw=true');
     background-size: cover;
 }
 
