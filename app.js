@@ -418,6 +418,12 @@ loadLevelData().then(data_ => {
         "https://github.com/dr-fox/blow-up-submarine/blob/main/images/v19_15.png?raw=true",
         "https://github.com/dr-fox/blow-up-submarine/blob/main/images/v19_19.png?raw=true"
     ];
+    imageUrls.forEach(url => preloadImage(url));
+
+    function preloadImage(url) {
+        const img = new Image();
+        img.src = url;
+    }
 });
 
 const gridItems = document.querySelectorAll('.grid-item');
