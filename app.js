@@ -180,6 +180,7 @@ function setGrid() {
     // 為每個格子初始化點擊次數
     gridItems.forEach((item, index) => {
         item.clickCount = 0; // 初始化點擊次數為 0
+        item.isBanSubmarine = false;
         let lst = ['sea', 'submarine', 'noSubmarine']
         item.classList.remove('sea', 'submarine', 'noSubmarine');
         item.classList.add(lst[0])
@@ -187,7 +188,11 @@ function setGrid() {
         item.addEventListener('click', () => {
             // 根據點擊次數改變背景
             // console.log('點擊1次')
-            item.clickCount = (item.clickCount + 1) % 3; // 點擊次數在 0, 1, 2 之間循環
+            item.clickCount = (item.clickCount + 1) % 2; // 點擊次數在 0, 1, 2 之間循環
+
+            if (item.isBanSubmarine){
+                item.clickCount = (item.clickCount + 1) % 2;
+            }
 
             // 清除之前的背景類名
             item.classList.remove('sea', 'submarine', 'noSubmarine');
@@ -212,6 +217,7 @@ function resetGrid() {
 
     gridItems.forEach((item, index) => {
         item.clickCount = 0; // 初始化點擊次數為 0
+        item.isBanSubmarine = false;
         item.classList.remove('sea', 'submarine', 'noSubmarine');
         item.classList.add('sea')
     });
@@ -230,6 +236,35 @@ function setNumber(data) {
 }
 
 function changeSubmarine(site) {
+    // 記錄禁止放置潛水艇的位置
+    function banSubmarine (Continue){
+        const banSite_ = new Set([]);
+
+        Continue.forEach((element) => {
+            for (let i = 0; i < 36; i++) {
+                if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) < 2 && Math.abs(i % 6 - element % 6) < 2){ // i 在 element 的九宮格內
+                    banSite_.add(i);
+                }
+            }
+        });
+        if (Continue.length < 4){
+            if (Continue[1] - Continue[0] == 1){ //橫的
+                // console.log(banSite_);
+                banSite_.delete(Continue[0]-1);
+                banSite_.delete(Continue[Continue.length-1]+1);
+                // console.log(banSite_);
+            }
+            else{ //直的
+                banSite_.delete(Continue[0]-6);
+                banSite_.delete(Continue[Continue.length-1]+6);
+            }
+        }
+        
+        // console.log(banSite_);
+        banSite_.forEach((value) => banSite.add(value)); // 加入 banSite
+        // console.log(banSite);
+    }
+
     function drawSubmarineHorizontal(Continue){
         let submarineLength = Continue.length
         // 選取 grid-container 元素
@@ -292,6 +327,7 @@ function changeSubmarine(site) {
                 Continue = Continue.concat(site[0]);
                 // console.log(Continue)
                 // 畫出潛水艇
+                banSubmarine (Continue)
                 drawSubmarineHorizontal(Continue)
                 subNumberTemp[Continue.length] += 1
                 Continue = []
@@ -330,12 +366,12 @@ function changeSubmarine(site) {
         return countSubVertical(site.slice(1), noContinue, Continue);
     }
 
-
     // 找橫排
     // console.log(site.length);
     // 移除舊的大潛水艇
     let gridItems = document.querySelectorAll('.grid-item');
     const rect = gridItems[0].getBoundingClientRect(); // 獲取 gridItem0 的邊界及座標
+    banSite.clear();
     // console.log(gridItems)
     // console.log(gridItems[0])
     // console.log(gridItems[0].getBoundingClientRect())
@@ -346,6 +382,7 @@ function changeSubmarine(site) {
     });
 
     let subNumberTemp = { ...subNumber };
+
     stie = countSubHorizontal(site);
     stie = countSubVertical(stie);
     // console.log(stie);
@@ -366,6 +403,9 @@ function changeSubmarine(site) {
         }
 
     }
+
+    banSite.forEach((value) => gridItems[value].isBanSubmarine = true); // 加入 banSite
+    console.log(banSite);
 }
 
 function loadLevelData() {
@@ -380,6 +420,15 @@ function loadLevelData() {
             // console.error('There was a problem with the fetch operation:', error);
         });
 }
+
+const gridItems = document.querySelectorAll('.grid-item');
+const numberItems = document.querySelectorAll('.number-item');
+let nowLevel = 0;
+let totalLevel = 100;
+let subNumber = {4:0, 3:0, 2:0, 1:0};
+let banSite = new Set([]);
+let data = [];
+let data1 = [];
 
 // 調用 loadLevelData 並獲取資料
 loadLevelData().then(data_ => {
@@ -425,18 +474,8 @@ loadLevelData().then(data_ => {
         img.src = url;
     }
 });
-
-const gridItems = document.querySelectorAll('.grid-item');
-const numberItems = document.querySelectorAll('.number-item');
-let nowLevel = 0;
-let totalLevel = 100;
-let subNumber = {4:0, 3:0, 2:0, 1:0};
-let data = [];
-let data1 = [];
-
 // const button = document.querySelector(".v17_37");
 // button.setAttribute("onclick", "randomLevel()");
-
 
 let title = document.querySelector('.v17_7');
 title.textContent = `第 ${nowLevel+1} 關`;
