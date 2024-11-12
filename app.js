@@ -403,7 +403,9 @@ function changeSubmarine(site) {
         }
 
     }
-
+    for (let i = 0; i < 36; i++) {
+        gridItems[i].isBanSubmarine = false;
+    }
     banSite.forEach((value) => gridItems[value].isBanSubmarine = true); // 加入 banSite
     console.log(banSite);
 }
