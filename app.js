@@ -242,21 +242,19 @@ function changeSubmarine(site) {
 
         Continue.forEach((element) => {
             for (let i = 0; i < 36; i++) {
-                if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) < 2 && Math.abs(i % 6 - element % 6) < 2){ // i 在 element 的九宮格內
+                if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) == 1 && Math.abs(i % 6 - element % 6) == 1){ // i 在 element 的九宮格內
                     banSite_.add(i);
                 }
             }
         });
-        if (Continue.length < 4){
+        if (Continue.length == 4){
             if (Continue[1] - Continue[0] == 1){ //橫的
-                // console.log(banSite_);
-                banSite_.delete(Continue[0]-1);
-                banSite_.delete(Continue[Continue.length-1]+1);
-                // console.log(banSite_);
+                banSite_.add(Continue[0]-1);
+                banSite_.add(Continue[Continue.length-1]+1);
             }
             else{ //直的
-                banSite_.delete(Continue[0]-6);
-                banSite_.delete(Continue[Continue.length-1]+6);
+                banSite_.add(Continue[0]-6);
+                banSite_.add(Continue[Continue.length-1]+6);
             }
         }
         
