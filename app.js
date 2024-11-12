@@ -28,18 +28,15 @@ function changeNum(site) {
         }
     }
 
+    // console.log('changeNum', subNumberTemp)
     // 檢查 d 陣列中的所有元素是否都為 0
-    if (d.every(element => element === 0) && Object.values(subNumber).every(value => value === 1)) {
-        // console.log('恭喜過關');
-
-        // <buttom class="v19_15 onclick="removeCongratulation"></buttom>
-
-        document.body.innerHTML += `
-            <div class="v19_2">
-                <buttom class="v19_6" onclick="randomLevel()"></buttom>
-                <buttom class="v19_15" onclick="nextLevel()"></buttom>
-                <div class="v19_19"></div>
-            </div>`;
+    if (d.every(element => element === 0) ) {
+        // console.log(101);
+        return true;
+    }
+    else{
+        // console.log(102);
+        return false;
     }
 }
 
@@ -206,8 +203,19 @@ function setGrid() {
             });
 
             // console.log('setGrid -> click', site)
-            changeNum(site);
-            changeSubmarine(site);
+            let judge1 = changeNum(site);
+            let judge2 =  changeSubmarine(site);
+        
+            console.log('setGrid', judge1, judge2)
+            if (judge1 && judge2){
+                document.body.innerHTML += `
+                    <div class="v19_2">
+                        <buttom class="v19_6" onclick="randomLevel()"></buttom>
+                        <buttom class="v19_15" onclick="nextLevel()"></buttom>
+                        <div class="v19_19"></div>
+                    </div>`;
+            }
+            
         });
     });
 }
@@ -223,8 +231,22 @@ function resetGrid() {
     });
     
     let site = []
-    changeNum(site);
-    changeSubmarine(site);
+
+    // console.log
+
+    let judge1 = changeNum(site);
+    let judge2 =  changeSubmarine(site);
+
+    console.log('resetGrid', judge1, judge2)
+    
+    if (judge1 && judge2){
+        document.body.innerHTML += `
+            <div class="v19_2">
+                <buttom class="v19_6" onclick="randomLevel()"></buttom>
+                <buttom class="v19_15" onclick="nextLevel()"></buttom>
+                <div class="v19_19"></div>
+            </div>`;
+    }
 }
 
 function setNumber(data) {
@@ -383,7 +405,7 @@ function changeSubmarine(site) {
         element.remove();
     });
     // console.log(104);
-    let subNumberTemp = { ...subNumber };
+    subNumberTemp = { ...subNumber };
 
     // console.log(105);
     // console.log(site);
@@ -408,6 +430,7 @@ function changeSubmarine(site) {
     // 更改圖示文字
     const subNum = document.querySelectorAll('.v8-common1');
 
+    // console.log('changeSubmarine', subNumberTemp)
     for (let i = 0; i < 4; i++) {
         subNum[i].textContent = subNumberTemp[4-i]; // 輸出每個元素
         if (subNumberTemp[4-i] > 1){
@@ -422,6 +445,15 @@ function changeSubmarine(site) {
         gridItems[i].isBanSubmarine = false;
     }
     banSite.forEach((value) => gridItems[value].isBanSubmarine = true); // 加入 banSite
+
+    if (Object.values(subNumberTemp).every(value => value === 1)){
+        console.log(103);
+        return true;
+    }
+    else{
+        console.log(104);
+        return false;
+    }
     
 }
 
@@ -443,6 +475,7 @@ const numberItems = document.querySelectorAll('.number-item');
 let nowLevel = 0;
 let totalLevel = 100;
 let subNumber = {4:0, 3:0, 2:0, 1:0};
+let subNumberTemp = {4:0, 3:0, 2:0, 1:0};
 let banSite = new Set([]);
 let data = [];
 let data1 = [];
