@@ -240,13 +240,13 @@ function changeSubmarine(site) {
     function banSubmarine (Continue){
         const banSite_ = new Set([]);
 
-        Continue.forEach((element) => {
-            for (let i = 0; i < 36; i++) {
-                if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) == 1 && Math.abs(i % 6 - element % 6) == 1){ // i 在 element 的九宮格內
-                    banSite_.add(i);
-                }
-            }
-        });
+        // Continue.forEach((element) => {
+        //     for (let i = 0; i < 36; i++) {
+        //         if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) == 1 && Math.abs(i % 6 - element % 6) == 1){ // i 在 element 的九宮格內
+        //             banSite_.add(i);
+        //         }
+        //     }
+        // });
         if (Continue.length == 4){
             if (Continue[1] - Continue[0] == 1){ //橫的
                 banSite_.add(Continue[0]-1);
@@ -381,6 +381,14 @@ function changeSubmarine(site) {
     });
 
     let subNumberTemp = { ...subNumber };
+
+    Continue.forEach((site) => {
+        for (let i = 0; i < 36; i++) {
+            if (Math.abs(Math.floor(i / 6) - Math.floor(site / 6)) == 1 && Math.abs(i % 6 - site % 6) == 1){ // i 在 element 的九宮格內
+                banSite.add(i);
+            }
+        }
+    });
 
     stie = countSubHorizontal(site);
     stie = countSubVertical(stie);
