@@ -368,9 +368,12 @@ function changeSubmarine(site) {
     // 找橫排
     // console.log(site.length);
     // 移除舊的大潛水艇
+    // console.log(101);
     let gridItems = document.querySelectorAll('.grid-item');
     const rect = gridItems[0].getBoundingClientRect(); // 獲取 gridItem0 的邊界及座標
+    // console.log(102);
     banSite.clear();
+    // console.log(103);
     // console.log(gridItems)
     // console.log(gridItems[0])
     // console.log(gridItems[0].getBoundingClientRect())
@@ -379,17 +382,22 @@ function changeSubmarine(site) {
     overlayImages.forEach(element => {
         element.remove();
     });
-
+    // console.log(104);
     let subNumberTemp = { ...subNumber };
 
-    Continue.forEach((site) => {
+    // console.log(105);
+    // console.log(site);
+    site.forEach((element) => {
         for (let i = 0; i < 36; i++) {
-            if (Math.abs(Math.floor(i / 6) - Math.floor(site / 6)) == 1 && Math.abs(i % 6 - site % 6) == 1){ // i 在 element 的九宮格內
+            if (Math.abs(Math.floor(i / 6) - Math.floor(element / 6)) == 1 && Math.abs(i % 6 - element % 6) == 1){ // i 在 element 的九宮格內
                 banSite.add(i);
             }
         }
     });
+    // console.log(106);
 
+    
+    // console.log(banSite);
     stie = countSubHorizontal(site);
     stie = countSubVertical(stie);
     // console.log(stie);
@@ -414,7 +422,7 @@ function changeSubmarine(site) {
         gridItems[i].isBanSubmarine = false;
     }
     banSite.forEach((value) => gridItems[value].isBanSubmarine = true); // 加入 banSite
-    console.log(banSite);
+    
 }
 
 function loadLevelData() {
