@@ -29,7 +29,7 @@ function changeNum(site) {
     }
 
     // 檢查 d 陣列中的所有元素是否都為 0
-    if (d.every(element => element === 0)) {
+    if (d.every(element => element === 0) && Object.values(subNumber).every(value => value === 0)) {
         // console.log('恭喜過關');
 
         // <buttom class="v19_15 onclick="removeCongratulation"></buttom>
