@@ -352,6 +352,7 @@ function changeSubmarine(site) {
         else {
             if (Continue.length > 0){
                     Continue = Continue.concat(site[0]);
+                    banSubmarine(Continue);
                     drawSubmarineVertical(Continue);
                     subNumberTemp[Continue.length] += 1;
                     Continue = [];
