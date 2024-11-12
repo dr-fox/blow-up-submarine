@@ -190,7 +190,7 @@ function setGrid() {
             // console.log('點擊1次')
             item.clickCount = (item.clickCount + 1) % 2; // 點擊次數在 0, 1, 2 之間循環
 
-            if (item.isBanSubmarine && item.clickCount == 2){
+            if (item.isBanSubmarine && item.clickCount == 1){
                 item.clickCount = (item.clickCount + 1) % 2;
             }
 
